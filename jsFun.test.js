@@ -41,3 +41,26 @@ describe('Use array.reduce to implement a simple version of array.map', () => {
     expect(output).toEqual([2, 4, 6, 8, 10]);
   });
 });
+
+const Spy = (object, method) => {
+  const result = { count: 0 };
+  const oldMethod = object[method];
+  object[method] = (...args) => {
+    result.count += 1;
+    return oldMethod(...args);
+  };
+  return result;
+}
+
+describe('Override a specified method of an object with new functionality while still maintaining all of the old behaviour. Create a spy that keeps track of how many times a function is called. Do not use any for/while loops or Array#forEach. Do not create any unnecessary functions e.g. helpers.', () => {
+  it('console error', () => {
+    var spy = Spy(console, 'error')
+
+    console.error('calling console.error')
+    console.log(spy);
+    console.error('calling console.error')
+    console.error('calling console.error')
+
+    expect(spy.count).toBe(3);
+  });
+});
