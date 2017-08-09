@@ -64,3 +64,36 @@ describe('Override a specified method of an object with new functionality while 
     expect(spy.count).toBe(3);
   });
 });
+
+// function curryN(fn) {
+//   function inner(args) {
+//     if (args.length === fn.length) {
+//         return fn(...args);
+//     }
+//     return function(param) {
+//       return inner([...args, param]);
+//     }
+//   }
+//   return inner([]);
+// }
+const curryN = (fn) => {
+  const inner = (args) => (args.length === fn.length) ? fn(...args) : (param) => inner([...args, param]);
+  return inner([]);
+}
+
+// const curryN = (f) => (function r(a) {return (a.length === f.length) ? f(...a) : (p) => r([...a, p])})([]);
+
+function add3(one, two, three) {
+  return one + two + three
+}
+describe('CurryN: Implement curryN function for an arbitrary number of arguments such that ', () => {
+  it('curryN', () => {
+    var curryC = curryN(add3);
+    var curryB = curryC(1);
+    var curryA = curryB(2);
+
+    expect(curryA(3)).toBe(6);
+    expect(curryA(10)).toBe(13);
+    expect(curryN(add3)(1)(2)(3)).toBe(6);
+  });
+});
