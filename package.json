@@ -1,22 +1,79 @@
 {
   "name": "jsfun",
   "version": "1.0.0",
-  "description": "Code form the jsFun Slack group",
+  "description": "Javascript puzzles and challenges",
   "main": "index.js",
   "scripts": {
-    "start": "jest --watch",
     "test": "jest --watch"
   },
-  "author": "",
+  "author": {
+    "name": "Alison Johnston",
+    "email": "aliamizon@gmail.com",
+    "url": "https://github.com/chookie"
+  },
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chookie/jsFun.gits"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "8"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": false
+      }
+    },
+    "env": {
+      "browser": false,
+      "node": true,
+      "jest": true
+    },
+    "rules": {
+      "quotes": "off",
+      "strict": "off",
+      "no-console": "error",
+      "comma-dangle": "off",
+      "no-underscore-dangle": "off",
+      "function-paren-newline": "off",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/*",
+    "**/*.md"
+  ],
   "dependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-jest": "^20.0.3",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-1": "^6.24.1",
-    "jest": "^20.0.4",
-    "nodemon": "^1.11.0"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "jest": "^23.1.0",
+    "pre-commit": "^1.2.2"
   }
 }
