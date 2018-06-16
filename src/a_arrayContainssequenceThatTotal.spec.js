@@ -15,10 +15,6 @@ describe('a: target is sum of any sequence of numbers in array', function () {
     { array: [3,-1,6,10], target: 5, description: 'negative array', expected: false},
     { array: [3,1,6,10], target: -7, description: 'negative target', expected: false},
   ];
-
-  it('', function () {
-    expect(true);
-  });
   runs.forEach(run => {
       it(`should be ${run.expected} when ${run.description}`, function () {
         expect(arrayContains(run.array, run.target)).toBe(run.expected);

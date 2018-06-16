@@ -16,9 +16,9 @@
     "type": "git",
     "url": "https://github.com/chookie/jsFun.gits"
   },
-  "pre-commit": [
-    "lint"
-  ],
+//  "pre-commit": [
+//    "lint"
+//  ],
   "babel": {
     "presets": [
       [

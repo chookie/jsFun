@@ -3,121 +3,23 @@ const arrayContains = (array, target) => {
 };
 
 describe('b: target is sum of any 2 numbers in array not necessarily in sequence', function () {
-  it('', function () {
-    expect(true);
-  });
-  [{ array: [], target: 4, description: 'empty array', expected: false}]
-    .forEach(run => {
+  const runs = [
+    { array: [], target: 8, description: 'empty array', expected: false },
+    { array: [10,5,7,3,2,6,4], target: 0, description: 'zero sum', expected: false },
+    { array: [8], target: 8, description: 'single int array', expected: true },
+    { array: [10,5,7,3,6,4], target: 2, description: 'less than array not found', expected: false},
+    { array: [10,5,7,3,6,4], target: 20, description: 'more than array not found', expected: false },
+    { array: [10,5,7,3,6,4], target: 5, description: 'within array not found', expected: false },
+    { array: [10,5,7,3,6,4], target: 14, description: 'sum edge unsorted', expected: true},
+    { array: [10,5,7,3,6,4], target: 13, description: 'sum edge sorted', expected: true },
+    { array: [10,5,7,3,6,4], target: 10, description: 'sum centre sorted', expected: true },
+    { array: [10,5,7,3,6,4], target: 17, description: 'sum edge and inner sorted', expected: true },
+    { array: [10,5,7,3,6,4], target: 8, description: 'sum inner sorted', expected: true },
+    { array: [-1,-3,-4,-2], target: -3, description: 'negative sum found', expected: true },
+    ];
+  runs.forEach(run => {
       it(`should be ${run.expected} when ${run.description}`, function () {
         expect(arrayContains(run.array, run.target)).toBe(run.expected);
       });
     });
 });
-
-
-
-def'empty array returns false'(){
-  given:
-    int[] array = []
-  int sum = 8
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == false
-}
-
-def'zero sum returns false'(){
-  given:
-    int[] array = [10,5,7,3,2,6,4]
-  int sum = 0
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == false
-}
-
-def'single int array found returns true'(){
-  given:
-    int[] array = [8]
-  int sum = 8
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == true
-}
-
-def'less than array not found returns false'(){
-  given:
-    int[] array = [10,5,7,3,6,4]
-  int sum = 2
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == false
-}
-
-def'more than array not found returns false'(){
-  given:
-    int[] array = [10,5,7,3,6,4]
-  int sum = 20
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == false
-}
-
-def'within array not found returns false'(){
-  given:
-    int[] array = [10,5,7,3,6,4]
-  int sum = 5
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == false
-}
-
-def'sum edge unsorted returns true'(){
-  given:
-    int[] array = [10,5,7,3,6,4]
-  int sum = 14
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == true
-}
-
-def'sum edge sorted returns true'(){
-  given:
-    int[] array = [10,5,7,3,6,4]
-  int sum = 13
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == true
-}
-
-def'sum centre sorted returns true'(){
-  given:
-    int[] array = [10,5,7,3,6,4]
-  int sum = 10
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == true
-}
-
-def'sum edge  and inner sorted returns true'(){
-  given:
-    int[] array = [10,5,7,3,6,4]
-  int sum = 17
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == true
-}
-
-def'sum inner sorted returns true'(){
-  given:
-    int[] array = [10,5,7,3,6,4]
-  int sum = 8
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == true
-}
-
-def'negative sum found returns true'(){
-  int[] array = [-1,-3,-4,-2]
-  int sum = -3
-
-  expect:
-    B_ArrayHasTwoElementsThatAddToNumber.check(array,sum) == true
-}
