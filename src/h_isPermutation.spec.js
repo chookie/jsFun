@@ -21,10 +21,10 @@ const runs = [
 
 const functions = [useArray, useString];
 
-describe('h: permutation', () => {
+describe('h: is permutation', () => {
   functions.forEach(func => {
     runs.forEach(run => {
-      it(`${func.name} should pass ${run.description}`, () => {
+      it(`${func.name} should be ${run.expected} when ${run.description}`, () => {
         expect(func.apply(this, [run.word, run.permutation ])).toBe(run.expected);
       });
     });
