@@ -17,7 +17,7 @@ const runs = [
 
 ];
 
-describe('f: string rotation', () => {
+describe('j: string rotation', () => {
   runs.forEach(run => {
     it(`${run.word} ${run.expected ? 'is' : 'is not'} rotation of ${run.rotation} `, () => {
       expect(isStringRotation(run.word, run.rotation)).toEqual(run.expected);
