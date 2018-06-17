@@ -16,7 +16,7 @@ const runs = [
 describe('i: find all permutations', () => {
   runs.forEach(run => {
     it(`when ${run.description} should be ${run.expected} `, () => {
-      expect(findPerms(run.word)).toEqual(run.expected);
+      expect(findPerms(run.word)).toBe(run.expected);
     });
   });
 });
