@@ -16,9 +16,6 @@
     "type": "git",
     "url": "https://github.com/chookie/jsFun.gits"
   },
-//  "pre-commit": [
-//    "lint"
-//  ],
   "babel": {
     "presets": [
       [
@@ -73,7 +70,6 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
-    "jest": "^23.1.0",
-    "pre-commit": "^1.2.2"
+    "jest": "^23.1.0"
   }
 }
