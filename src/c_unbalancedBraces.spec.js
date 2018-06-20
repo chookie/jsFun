@@ -7,10 +7,9 @@ const balanceBraces = (input) => {
   }
   let count = 0;
   let left = '';
-  let ch = '';
   // Left braces
   for (let i=0; i < input.length; i++) {
-    ch = input.charAt(i);
+    const ch = input.charAt(i);
     if (ch === "("){
       count += 1;
       left += ch;
@@ -27,7 +26,7 @@ const balanceBraces = (input) => {
   let right = '';
   count = 0;
   for (let i=left.length-1; i>=0; i--) {
-    ch = left.charAt(i);
+    const ch = left.charAt(i);
     if (ch === ")"){
       count += 1;
       right = ch + right;
