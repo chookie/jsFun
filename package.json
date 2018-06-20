@@ -16,6 +16,13 @@
     "type": "git",
     "url": "https://github.com/chookie/jsFun.gits"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testRegex": "src/.*\\.spec\\.js$"
+  },
   "babel": {
     "presets": [
       [
