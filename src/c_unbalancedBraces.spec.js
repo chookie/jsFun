@@ -9,7 +9,6 @@ const balanceBraces = (input) => {
   let left = '';
   let ch = '';
   // Left braces
-  let test = '123456'.charAt(1);
   for (let i=0; i < input.length; i++) {
     ch = input.charAt(i);
     if (ch === "("){
