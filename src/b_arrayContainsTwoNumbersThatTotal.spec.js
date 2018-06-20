@@ -1,5 +1,21 @@
 const arrayContains = (array, target) => {
-  return false;
+  if (!array || array.length === 0) {
+    return false;
+  }
+  const sortedArray = array.sort();
+  let left = 0;
+  let right = array.length - 1;
+  while (true) {
+    const sum = array[left] +  array[right];
+    if (array[left] === target || array[right] === target || sum === target) {
+      return true;
+    }
+    if (array[right] > array[right]) {
+      right -= 1;
+    } else {
+      left -= 1;
+    }
+  };
 };
 
 describe('b: target is sum of any 2 numbers in array not necessarily in sequence', () => {
@@ -11,7 +27,7 @@ describe('b: target is sum of any 2 numbers in array not necessarily in sequence
     { array: [10,5,7,3,6,4], target: 20, description: 'more than array not found', expected: false },
     { array: [10,5,7,3,6,4], target: 5, description: 'within array not found', expected: false },
     { array: [10,5,7,3,6,4], target: 14, description: 'sum edge unsorted', expected: true},
-    { array: [10,5,7,3,6,4], target: 13, description: 'sum edge sorted', expected: true },
+    { array: [10,7,5,6,4,3], target: 13, description: 'sum edge sorted', expected: true },
     { array: [10,5,7,3,6,4], target: 10, description: 'sum centre sorted', expected: true },
     { array: [10,5,7,3,6,4], target: 17, description: 'sum edge and inner sorted', expected: true },
     { array: [10,5,7,3,6,4], target: 8, description: 'sum inner sorted', expected: true },
@@ -19,7 +35,7 @@ describe('b: target is sum of any 2 numbers in array not necessarily in sequence
     ];
   runs.forEach(run => {
       it(`should be ${run.expected} when ${run.description}`, () => {
-        expect(arrayContains(run.array, run.target)).toBe(run.expected);
+        expect(sortedArray(run.array, run.target)).toBe(run.expected);
       });
     });
 });
