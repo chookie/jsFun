@@ -7,7 +7,7 @@ const reverseString = (input) => {
 
 describe('d: reverse a string', () => {
   const runs = [
-    { description: 'reverse string', input: 'absdef', expected: 'fedcba' },
+    { description: 'reverse string', input: 'absdef', expected: 'fedsba' },
     { description: 'empty string', input: '', expected: '' },
     { description: 'null string', input: null, expected: null },
     { description: 'single character', input: 'f', expected: 'f' },
