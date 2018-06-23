@@ -1,28 +1,29 @@
 const arrayContains = (array, target) => {
-  if (!array || array.length === 0) {
+  if (!array || array.length <= 1) {
     return false;
   }
-  const sortedArray = array.sort();
+  const sortedArray = array.sort((a, b) => a - b);
   let left = 0;
-  let right = array.length - 1;
-  while (true) {
-    const sum = array[left] +  array[right];
-    if (array[left] === target || array[right] === target || sum === target) {
+  let right = sortedArray.length - 1;
+  while (left < right) {
+    const sum = sortedArray[left] +  sortedArray[right];
+    if (sum === target) {
       return true;
     }
-    if (array[right] > array[right]) {
+    if (target < sum) {
       right -= 1;
     } else {
-      left -= 1;
+      left += 1;
     }
   };
+  return false;
 };
 
 describe('b: target is sum of any 2 numbers in array not necessarily in sequence', () => {
   const runs = [
     { array: [], target: 8, description: 'empty array', expected: false },
     { array: [10,5,7,3,2,6,4], target: 0, description: 'zero sum', expected: false },
-    { array: [8], target: 8, description: 'single int array', expected: true },
+    { array: [8], target: 8, description: 'single int array', expected: false },
     { array: [10,5,7,3,6,4], target: 2, description: 'less than array not found', expected: false},
     { array: [10,5,7,3,6,4], target: 20, description: 'more than array not found', expected: false },
     { array: [10,5,7,3,6,4], target: 5, description: 'within array not found', expected: false },
@@ -35,7 +36,7 @@ describe('b: target is sum of any 2 numbers in array not necessarily in sequence
     ];
   runs.forEach(run => {
       it(`should be ${run.expected} when ${run.description}`, () => {
-        expect(sortedArray(run.array, run.target)).toBe(run.expected);
+        expect(arrayContains(run.array, run.target)).toBe(run.expected);
       });
     });
 });

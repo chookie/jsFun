@@ -1,8 +1,10 @@
 /**
  * Use and array but do it in place in the same array
  */
-const reverseString = (input) => {
-  return input;
+const reverseString = (forward) => {
+  if (!forward) return forward;
+
+  array = forward.toArray()
 };
 
 describe('d: reverse a string', () => {
