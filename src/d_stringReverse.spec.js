@@ -1,3 +1,6 @@
+/**
+ * Use and array but do it in place in the same array
+ */
 const reverseString = (input) => {
   return input;
 };
