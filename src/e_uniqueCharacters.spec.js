@@ -4,7 +4,19 @@
  * 4 different methods
  */
 const booleanArrayAndLoop = (input) => {
-  return input;
+  if (!input) {
+    return input
+  };
+
+  const array = new Array(128).fill(false);
+  for (let i=0; i<input.length; i++) {
+    const ansiCode = input.charCodeAt(i);
+    if (array[ansiCode]) {
+      return false;
+    }
+    array[ansiCode] = true;
+  }
+  return true;
 };
  const loopAndSet = (input) => {
    return input;
@@ -20,11 +32,12 @@ const booleanArrayAndLoop = (input) => {
    { description: 'duplicate characters', input: 'sTutua', expected: false },
    { description: 'different case', input: 'sTutUa', expected: true },
    { description: 'unique characters', input: 'saivw', expected: true },
-   { description: 'duplicate at end', input: 'abcdee', expected: true },
+   { description: 'duplicate at end', input: 'abcdee', expected: false },
    { description: 'duplicate at start', input: 'aabcde', expected: false },
  ];
 
- const functions = [booleanArrayAndLoop, loopAndSet, loopInLoop, map];
+ // const functions = [booleanArrayAndLoop, loopAndSet, loopInLoop, map];
+ const functions = [booleanArrayAndLoop];
 
  describe('e: unique characters', () => {
    functions.forEach(func => {
